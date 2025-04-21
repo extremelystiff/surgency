@@ -1,0 +1,5 @@
+pip freeze > requirements.txt
+# Manually edit requirements.txt if needed to ensure these are present:
+# discord.py==2.x.x  # Or the specific py-cord version
+# python-dotenv
+# asyncpg
