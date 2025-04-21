@@ -1,7 +1,7 @@
 # cogs/combat.py
 import discord
 from discord.ext import commands
-from discord import option # Use this for slash command options
+
 
 import random
 import math
@@ -84,8 +84,8 @@ class CombatCog(commands.Cog):
         return win_chance
 
     @commands.slash_command(name="attack", description="Engage another user in simulated Sandstorm combat!")
-    @option("target", description="The user you want to attack.", required=True)
-    @option("weapon", description="Weapon to use (optional, random if not specified).", 
+    @discord.option("target", description="The user you want to attack.", required=True) # ADD discord.
+    @discord.option("weapon", description="Weapon to use (optional, random if not specified).", # ADD discord.
             required=False, autocomplete=weapon_autocomplete)
     async def attack(self, ctx: discord.ApplicationContext, target: discord.Member, weapon: str = None):
         """Handler for the /attack command."""
@@ -157,7 +157,7 @@ class CombatCog(commands.Cog):
 
 
     @commands.slash_command(name="stats", description="Check your or another user's combat stats.")
-    @option("user", description="The user whose stats you want to see (optional, defaults to you).", required=False)
+    @discord.option("user", description="The user whose stats you want to see (optional, defaults to you).", required=False) # ADD discord.
     async def stats(self, ctx: discord.ApplicationContext, user: discord.Member = None):
         """Handler for the /stats command."""
         target_user = user or ctx.author # Default to command user if none specified
